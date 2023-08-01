@@ -95,12 +95,14 @@ Route::group(["middleware" => ["auth:sanctum"]], function () {
     Route::apiResource("department", DepartmentController::class);
     Route::apiResource("location", LocationController::class);
     Route::apiResource("hri", HriController::class);
+    Route::post("import_hri", [HriController::class, "import_hri"]);
     Route::post("hri/validate", [HriController::class, "validate_hri_code"]);
     Route::patch("hri_archive/{id}", [HriController::class, "destroy"]);
 });
 
 Route::post("login", [UserController::class, "login"]);
-Route::post("sms_order", [OrderController::class, "sms_order"]);
+Route::post("sms_order_falcon", [OrderController::class, "sms_order_falcon"]);
+Route::post("sms_order_hri", [OrderController::class, "sms_order_hri"]);
 Route::post("sms_cancel", [OrderController::class, "sms_cancel"]);
 // Route::get("reports", [ReportController::class, "view"]);
 // Route::get("users", [UserController::class, "index"]);

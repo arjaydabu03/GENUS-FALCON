@@ -12,6 +12,7 @@ use App\Functions\GlobalFunction;
 use App\Http\Requests\HRI\DisplayRequest;
 use App\Http\Requests\HRI\StoreRequest;
 use App\Http\Requests\HRI\CodeRequest;
+use App\Http\Requests\HRI\ImportRequest;
 
 class HriController extends Controller
 {
@@ -26,7 +27,7 @@ class HriController extends Controller
         })->when($search, function ($query) use ($search) {
             $query
                 ->where("code", "like", "%" . $search . "%")
-                ->orWhere("description", "like", "%" . $search . "%");
+                ->orWhere("name", "like", "%" . $search . "%");
         });
 
         $hri = $paginate
@@ -49,6 +50,14 @@ class HriController extends Controller
             "name" => $request["name"],
         ]);
         return GlobalFunction::save(Status::HRI_SAVE, $hri);
+    }
+    public function import_hri(ImportRequest $request)
+    {
+        $import = $request->all();
+
+        $import = HRI::upsert($import, ["id"], ["code"], ["name"]);
+
+        return GlobalFunction::save(Status::HRI_IMPORT, $request->toArray());
     }
     public function update(StoreRequest $request, $id)
     {

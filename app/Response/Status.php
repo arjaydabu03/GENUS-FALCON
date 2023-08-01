@@ -19,6 +19,7 @@ class Status
     const MATERIAL_IMPORT = "Material imported successfully.";
 
     const COMPANY_IMPORT = "Company sync successfully.";
+    const HRI_IMPORT = "HRI customer imported successfully.";
     const DEPARTMENT_IMPORT = "Department sync successfully.";
     const LOCATION_IMPORT = "Location sync successfully.";
     const ORDER_SAVE = "Order successfully saved.";
@@ -69,7 +70,7 @@ class Status
     //VALIDATION
     const SINGLE_VALIDATION = "Data has been validated.";
     const INVALID_ACTION = "Invalid action.";
-    const INVALID_UPDATE = "Unable to update this transaction is already approved.";
+    const INVALID_UPDATE = "Unable to update this transaction permission needed.";
     const NEW_PASSWORD = "Please change your password.";
     const EXISTS = "Data already exists.";
     const ACCESS_DENIED = "You do not have permission.";

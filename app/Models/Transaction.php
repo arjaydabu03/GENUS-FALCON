@@ -23,7 +23,10 @@ class Transaction extends Model
         "date_served",
         "reason",
         "order_type",
-        "hri_customer",
+
+        "hri_id",
+        "hri_code",
+        "hri_name",
 
         "company_id",
         "company_code",

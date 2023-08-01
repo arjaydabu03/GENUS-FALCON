@@ -4,7 +4,7 @@ namespace App\Http\Requests\HRI;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreRequest extends FormRequest
+class ImportRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,12 +24,21 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            "code" => [
-                "required",
-                "string",
-                $this->route()->hri ? "unique:hri,code," . $this->route()->hri : "unique:hri,code",
-            ],
-            "name" => ["required", "string"],
+            "*.code" => ["required", "unique:hri,code"],
+            "*.name" => ["required"],
+        ];
+    }
+    public function attributes()
+    {
+        return [
+            "*.code" => "code",
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            "*.code.unique" => "This :attribute has already been listed",
         ];
     }
 }
