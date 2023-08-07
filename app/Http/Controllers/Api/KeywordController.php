@@ -92,7 +92,7 @@ class KeywordController extends Controller
         }
         return GlobalFunction::response_function($message, $keyword);
     }
-    public function validate_hri_code(CodeRequest $request)
+    public function validate_keyword_code(CodeRequest $request)
     {
         return GlobalFunction::response_function(Status::SINGLE_VALIDATION);
     }

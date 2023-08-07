@@ -27,8 +27,8 @@ class CodeRequest extends FormRequest
             "code" => [
                 "required",
                 $this->get("id")
-                    ? "unique:keyowrd,code," . $this->get("id")
-                    : "unique:keyowrd,code",
+                    ? "unique:keyword,code," . $this->get("id")
+                    : "unique:keyword,code",
             ],
         ];
     }

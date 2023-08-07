@@ -115,10 +115,18 @@ class OrderController extends Controller
         $user_permission = Auth()->user()->role->access_permission;
         $user_role = explode(", ", $user_permission);
 
+        $add_day = Carbon::now()
+            ->addDay()
+            ->timeZone("Asia/Manila")
+            ->format("Y-m-d H:i");
+
+        $keyword = $request["keyword"]["code"];
+
         $transaction = Transaction::create([
             "order_no" => $request["order_no"],
 
-            "date_needed" => date("Y-m-d", strtotime($request["date_needed"])),
+            "date_needed" =>
+                $keyword == "HRI" ? date("Y-m-d", strtotime($request["date_needed"])) : $add_day,
             "date_ordered" => Carbon::now()
                 ->timeZone("Asia/Manila")
                 ->format("Y-m-d H:i"),

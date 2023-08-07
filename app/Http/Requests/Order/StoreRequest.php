@@ -26,6 +26,7 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         $order_no = $this->input("order_no");
+        $keyword = $this->input("keyword_code");
         $customer_code = $this->input("customer.code");
 
         $requestor_id = $this->user()->id;
@@ -40,16 +41,20 @@ class StoreRequest extends FormRequest
                     })
                     ->whereNull("deleted_at"),
             ],
-            "date_needed" => "required",
+
             "rush" => "nullable",
 
             "company.id" => "required",
             "company.code" => "required",
             "company.name" => "required",
 
-            "hri.id" => "nullable",
-            "hri.code" => "nullable",
-            "hri.name" => "nullable",
+            "hri.id" => Rule::requiredIf($this->input("keyword.code") == "HRI"),
+            "hri.code" => Rule::requiredIf($this->input("keyword.code") == "HRI"),
+            "hri.name" => Rule::requiredIf($this->input("keyword.code") == "HRI"),
+
+            "keyword.id" => "required",
+            "keyword.code" => "required",
+            "keyword.description" => "required",
 
             "department.id" => "required",
             "department.code" => "required",
@@ -116,6 +121,9 @@ class StoreRequest extends FormRequest
             "order_no" => "order no.",
             "order.*.material.code" => "material",
             "order.*.material.id" => "Item",
+            "hri.id" => "Hri id",
+            "hri.code" => "Hri code",
+            "hri.name" => "Hri name",
         ];
     }
 
@@ -124,6 +132,9 @@ class StoreRequest extends FormRequest
         return [
             "order.*.material.code.unique" => "This :attribute has already been ordered.",
             "order.*.material.id.distinct" => "This :attribute has already been ordered.",
+            "hri.id.required_if" => " :attribute is required.",
+            "hri.code.required_if" => " :attribute is required.",
+            "hri.name.required_if" => " :attribute is required.",
         ];
     }
 

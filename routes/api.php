@@ -101,7 +101,7 @@ Route::group(["middleware" => ["auth:sanctum"]], function () {
     Route::patch("hri_archive/{id}", [HriController::class, "destroy"]);
 
     Route::apiResource("keyword", KeywordController::class);
-    Route::post("keyword/validate", [KeywordController::class, "validate_keyword_code"]);
+    Route::post("keyword_validate", [KeywordController::class, "validate_keyword_code"]);
     Route::patch("keyword_archive/{id}", [KeywordController::class, "destroy"]);
 });
 
