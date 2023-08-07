@@ -30,6 +30,11 @@ class TransactionResource extends JsonResource
                 "date_disapproved" => $this->deleted_at,
             ],
 
+            "keyword" => [
+                "id" => $this->keyword_id,
+                "code" => $this->keyword_code,
+                "description" => $this->keyword_desc,
+            ],
             "hri" => [
                 "id" => $this->hri_id,
                 "code" => $this->hri_code,

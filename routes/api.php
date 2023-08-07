@@ -18,6 +18,7 @@ use App\Http\Controllers\Api\CompanyController;
 use App\Http\Controllers\Api\DepartmentController;
 use App\Http\Controllers\Api\LocationController;
 use App\Http\Controllers\Api\HriController;
+use App\Http\Controllers\Api\KeywordController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -98,6 +99,10 @@ Route::group(["middleware" => ["auth:sanctum"]], function () {
     Route::post("import_hri", [HriController::class, "import_hri"]);
     Route::post("hri/validate", [HriController::class, "validate_hri_code"]);
     Route::patch("hri_archive/{id}", [HriController::class, "destroy"]);
+
+    Route::apiResource("keyword", KeywordController::class);
+    Route::post("keyword/validate", [KeywordController::class, "validate_keyword_code"]);
+    Route::patch("keyword_archive/{id}", [KeywordController::class, "destroy"]);
 });
 
 Route::post("login", [UserController::class, "login"]);

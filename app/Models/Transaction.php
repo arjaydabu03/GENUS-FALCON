@@ -28,6 +28,10 @@ class Transaction extends Model
         "hri_code",
         "hri_name",
 
+        "keyword_id",
+        "keyword_code",
+        "keyword_desc",
+
         "company_id",
         "company_code",
         "company_name",

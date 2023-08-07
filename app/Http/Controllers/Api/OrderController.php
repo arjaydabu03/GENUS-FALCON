@@ -130,6 +130,10 @@ class OrderController extends Controller
             "hri_code" => $request["hri"]["code"],
             "hri_name" => $request["hri"]["name"],
 
+            "keyword_id" => $request["keyword"]["id"],
+            "keyword_code" => $request["keyword"]["code"],
+            "keyword_desc" => $request["keyword"]["description"],
+
             "company_id" => $request["company"]["id"],
             "company_code" => $request["company"]["code"],
             "company_name" => $request["company"]["name"],
@@ -234,8 +238,13 @@ class OrderController extends Controller
             "charge_company_code" => $request["charge_company"]["code"],
             "charge_company_name" => $request["charge_company"]["name"],
 
+            "hri_id" => $request["hri"]["id"],
             "hri_code" => $request["hri"]["code"],
             "hri_name" => $request["hri"]["name"],
+
+            "keyword_id" => $request["keyword"]["id"],
+            "keyword_code" => $request["keyword"]["code"],
+            "keyword_desc" => $request["keyword"]["description"],
 
             "charge_department_id" => $request["charge_department"]["id"],
             "charge_department_code" => $request["charge_department"]["code"],

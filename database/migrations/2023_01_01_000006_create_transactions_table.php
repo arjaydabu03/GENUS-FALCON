@@ -25,6 +25,10 @@ return new class extends Migration {
             $table->string("hri_code")->nullable();
             $table->string("hri_name")->nullable();
 
+            $table->integer("keyword_id");
+            $table->string("keyword_code");
+            $table->string("keyword_desc");
+
             $table->integer("company_id");
             $table->string("company_code");
             $table->string("company_name");
