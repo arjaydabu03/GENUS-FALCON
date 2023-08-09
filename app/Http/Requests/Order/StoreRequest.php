@@ -169,11 +169,9 @@ class StoreRequest extends FormRequest
             $with_rush_remarks = !empty($this->input("rush"));
 
             if ($is_rush && !$with_rush_remarks) {
-                return $validator
-                    ->errors()
-                    ->add("rush", "The rush field is required cut off reach.");
+                return $validator->errors()->add("rush", "cut off reach.");
             } elseif ($is_advance && !$with_rush_remarks) {
-                $validator->errors()->add("rush", "The rush field is required cut off reach.");
+                $validator->errors()->add("rush", "cut off reach.");
             }
         });
     }

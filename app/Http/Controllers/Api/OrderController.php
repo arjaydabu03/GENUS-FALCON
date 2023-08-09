@@ -115,8 +115,7 @@ class OrderController extends Controller
         $user_permission = Auth()->user()->role->access_permission;
         $user_role = explode(", ", $user_permission);
 
-        $add_day = Carbon::now()
-            ->addDay()
+        $date_today = Carbon::now()
             ->timeZone("Asia/Manila")
             ->format("Y-m-d H:i");
 
@@ -126,7 +125,7 @@ class OrderController extends Controller
             "order_no" => $request["order_no"],
 
             "date_needed" =>
-                $keyword == "HRI" ? date("Y-m-d", strtotime($request["date_needed"])) : $add_day,
+                $keyword == "HRI" ? date("Y-m-d", strtotime($request["date_needed"])) : $date_today,
             "date_ordered" => Carbon::now()
                 ->timeZone("Asia/Manila")
                 ->format("Y-m-d H:i"),
